@@ -9,9 +9,9 @@
 
 # --------- DEFINITION ---------
 class Personne:
-    def __init__(self, nom: str = "", age: int = 0) -> None: # CONSTRUCTEUR
-        
+    espece_etre_vivant = "Humain (mammifère homo sapiens)" # Variable de classe
 
+    def __init__(self, nom: str = "", age: int = 0) -> None: # CONSTRUCTEUR
         self.nom = nom # Création d'une instance : nom
         if nom  == "":
             self.nom  = self.DemanderNom()
@@ -41,6 +41,9 @@ class Personne:
     def DemanderNom(self):
         nomDemander = input("Veuillez entrer votre nom: ")
         return nomDemander
+    
+    def AfficherInfosEtreVivant():
+        print("Info être vivant :" + Personne.espece_etre_vivant)
 
 # --------- UTILISATION - V1 ---------
 # personne1 = Personne("Haris", 30) # Creation de personne
@@ -58,17 +61,24 @@ class Personne:
 
 # --------- UTILISATION - V2---------
 
-liste_personnes = [(Personne("Haris", 30)), (Personne("Ayse", 15)), (Personne())]
+liste_personnes = [(Personne("Haris", 39))
+                    , (Personne("Ayse", 30))
+                    , (Personne("Yigit", 14))]
+print()
 print("-----------------")
 print("Affichage liste 1")
 print("-----------------")
-for personne in liste_personnes:
-    personne.SePresenter()
+for perso in liste_personnes:
+    perso.SePresenter()
+    Personne.AfficherInfosEtreVivant()
 
 
-liste_personnes.append(Personne(age = 29))
+print()
 print("-----------------")
 print("Affichage liste 2")
 print("-----------------")
-for personne in liste_personnes:
-    personne.SePresenter()
+liste_personnes.append(Personne(age = 29))
+for perso in liste_personnes:
+    perso.SePresenter()
+    Personne.AfficherInfosEtreVivant()
+    print()
